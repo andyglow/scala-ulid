@@ -20,24 +20,6 @@ private[ulid] object Crockford {
       len   = 256).toArray
   }
 
-  private[ulid] val ValidChars: Array[Byte] = Array[Byte](
-    -1, -1, -1, -1, -1, -1, -1, -1,
-    -1, -1, -1, -1, -1, -1, -1, -1,
-    -1, -1, -1, -1, -1, -1, -1, -1,
-    -1, -1, -1, -1, -1, -1, -1, -1,
-    -1, -1, -1, -1, -1, -1, -1, -1,
-    -1, -1, -1, -1, -1, -1, -1, -1,
-    0, 1, 2, 3, 4, 5, 6, 7,
-    8, 9, -1, -1, -1, -1, -1, -1,
-    -1, 10, 11, 12, 13, 14, 15, 16,
-    17, 1, 18, 19, 1, 20, 21, 0,
-    22, 23, 24, 25, 26, -1, 27, 28,
-    29, 30, 31, -1, -1, -1, -1, -1,
-    -1, 10, 11, 12, 13, 14, 15, 16,
-    17, 1, 18, 19, 1, 20, 21, 0,
-    22, 23, 24, 25, 26, -1, 27, 28,
-    29, 30, 31)
-
   private val Modus = 32
 
   private val TimeLen = 10
@@ -60,5 +42,11 @@ private[ulid] object Crockford {
   }
 
   def isValid(x: String): Boolean =
-    x.length == 26 && x.forall(ValidChars(_) != -1)
+    x.length == 26 && x.forall { c =>
+      val b = c.toByte
+      def isDig = b >= 48 && b <= 57
+      def isChr = b >= 65 && b <= 90
+
+      isDig || isChr
+    }
 }

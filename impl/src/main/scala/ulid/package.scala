@@ -1,5 +1,3 @@
-import scala.annotation.tailrec
-
 package object ulid {
 
   object ULID {

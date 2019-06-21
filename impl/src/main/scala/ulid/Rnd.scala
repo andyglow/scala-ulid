@@ -1,6 +1,5 @@
 package ulid
 
-import java.nio.ByteBuffer
 import java.security.SecureRandom
 import java.util.{Random, UUID}
 import java.util.concurrent.atomic.AtomicInteger
@@ -37,7 +36,7 @@ object Rnd {
 
   lazy val fastWeakSeed: Rnd = {
     val rnd = new Random()
-    val nodeId = rnd.nextInt
+    val nodeId = rnd.nextInt.toLong
     val seed = new AtomicInteger(rnd.nextInt)
     make {
       (nodeId << 16 | seed.incrementAndGet, System.nanoTime)
@@ -46,7 +45,7 @@ object Rnd {
 
   lazy val fastSecureSeed: Rnd = {
     val rnd = SecureRandom.getInstance("NativePRNGNonBlocking")
-    val nodeId = rnd.nextInt
+    val nodeId = rnd.nextInt.toLong
     val seed = new AtomicInteger(rnd.nextInt)
     make {
       (nodeId << 16 | seed.incrementAndGet, System.nanoTime)
@@ -75,14 +74,16 @@ object Rnd {
     }
   }
 
-  lazy val default: Rnd = {
-    sys.props.getOrElse("ulid.rnd", "fastWeakSeed") match {
+  lazy val default: Rnd = lookupDefault(sys.props)
+
+  private[ulid] def lookupDefault(props: collection.Map[String, String]): Rnd = {
+    props.getOrElse("ulid.rnd", "fastWeakSeed") match {
       case "weak"           => weak
       case "secure"         => secure
       case "uuid"           => uuid
       case "fastSecureSeed" => fastSecureSeed
       case "fastWeakSeed"   => fastWeakSeed
-      case _                => weak
+      case _                => fastWeakSeed
     }
   }
 }

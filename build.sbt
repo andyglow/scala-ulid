@@ -6,30 +6,45 @@ import scala.sys.process._
 publishTo in ThisBuild := sonatypePublishTo.value
 
 val commons = Seq(
-  
+
   organization := "com.github.andyglow",
-  
+
   homepage := Some(new URL("http://github.com/andyglow/scala-ulid")),
-  
+
   startYear := Some(2019),
-  
+
   organizationName := "andyglow",
-  
+
   scalaVersion := "2.11.12",
-  
+
   crossScalaVersions := Seq("2.11.12", "2.12.8", "2.13.0"),
-  
-  scalacOptions ++= Seq(
-    "-encoding", "UTF-8",
-    "-feature",
-    "-unchecked",
-    "-deprecation",
-    //  "-Xfatal-warnings",
-    "-Xlint",
-    "-Yno-adapted-args",
-    "-Ywarn-dead-code",
-    "-Ywarn-numeric-widen",
-    "-Xfuture"),
+
+  scalacOptions ++= {
+    val options = Seq(
+      "-encoding", "UTF-8",
+      "-feature",
+      "-unchecked",
+      "-deprecation",
+      "-Xfatal-warnings",
+      "-Xlint",
+      "-Yno-adapted-args",
+      "-Ywarn-dead-code",
+      "-Ywarn-numeric-widen",
+      "-Xfuture")
+
+    // WORKAROUND https://github.com/scala/scala/pull/5402
+    CrossVersion.partialVersion(scalaVersion.value) match {
+      case Some((2, 12)) => options.map {
+        case "-Xlint"               => "-Xlint:-unused,_"
+        case "-Ywarn-unused-import" => "-Ywarn-unused:imports,-patvars,-privates,-locals,-params,-implicits"
+        case other                  => other
+      }
+      case Some((2, n)) if n >= 13  => options.filterNot { opt =>
+        opt == "-Yno-adapted-args" || opt == "-Xfuture"
+      } :+ "-Xsource:2.13"
+      case _             => options
+    }
+  },
 
   scalacOptions in (Compile,doc) ++= Seq(
     "-groups",
@@ -80,12 +95,19 @@ val commons = Seq(
 )
 
 lazy val impl = (project in file("impl"))
-  .settings(commons, name := "ulid")
+  .settings(
+    commons,
+    name := "ulid",
+    libraryDependencies ++= Seq(
+      "org.scalatest"  %% "scalatest"  % "3.0.8" % Test,
+      "org.scalacheck" %% "scalacheck" % "1.14.0" % Test))
 
 lazy val bench = (project in file("bench"))
   .dependsOn(impl)
   .enablePlugins(JmhPlugin)
-  .settings(commons, name := "bench")
+  .settings(
+    commons,
+    name := "bench")
 
 lazy val root = (project in file("."))
   .aggregate(impl)
