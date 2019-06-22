@@ -1,5 +1,8 @@
 # Scala ULID 
 
+[![Build Status](https://travis-ci.org/andyglow/scala-ulid.svg?branch=master)](https://travis-ci.org/andyglow/scala-ulid)
+[![Coverage Status](https://coveralls.io/repos/github/andyglow/scala-ulid/badge.svg?branch=master)](https://coveralls.io/github/andyglow/scala-ulid?branch=master)
+
 Scala implementation of ULID spec (https://github.com/ulid/spec)
 
 Scala version 2.12 as well as 2.12 is supported.
