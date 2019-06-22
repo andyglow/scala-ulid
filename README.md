@@ -1,16 +1,21 @@
-# Scala ULID 
+Scala ULID [![scaladex-badge][]][scaladex] [![maven-badge][]][maven] [![travis-badge][]][travis] [![coveralls-badge][]][coveralls]
+==========
 
-[![Build Status](https://travis-ci.org/andyglow/scala-ulid.svg?branch=master)](https://travis-ci.org/andyglow/scala-ulid)
-[![Coverage Status](https://coveralls.io/repos/github/andyglow/scala-ulid/badge.svg?branch=master)](https://coveralls.io/github/andyglow/scala-ulid?branch=master)
-![Maven Central](https://img.shields.io/maven-central/v/com.github.andyglow/ulid_2.11.svg)
-![Maven Central](https://img.shields.io/maven-central/v/com.github.andyglow/ulid_2.12.svg)
-![Maven Central](https://img.shields.io/maven-central/v/com.github.andyglow/ulid_2.13.svg)
+[scaladex]:            https://index.scala-lang.org/com.github.andyglow/scala-ulid
+[scaladex-badge]:      https://index.scala-lang.org/com.github.andyglow/scala-ulid/latest.svg
+[travis]:              https://travis-ci.org/andyglow/scala-ulid
+[travis-badge]:        https://travis-ci.org/andyglow/scala-ulid.svg?branch=master
+[coveralls]:           https://coveralls.io/github/andyglow/scala-ulid?branch=master
+[coveralls-badge]:     https://coveralls.io/repos/github/andyglow/scala-ulid/badge.svg?branch=master
+[maven]:               https://search.maven.org/#search%7Cga%7C1%7Cscala-ulid
+[maven-badge]:         https://maven-badges.herokuapp.com/maven-central/com.github.andyglow/ulid_2.13/badge.svg
 
 Scala implementation of ULID spec (https://github.com/ulid/spec)
 
 Scala version 2.11, 2.12 as well as 2.13 are supported.
 
-## Features
+Features
+--------
 - fast
 - has several implementations
   - **weak**. based in `java.util.Random`
@@ -21,7 +26,8 @@ Scala version 2.11, 2.12 as well as 2.13 are supported.
 - type-safe. ULID as a newtype (thanks to https://github.com/estatico/scala-newtype for the inspiration)
 - configurable default `Rnd` implementation aka `-Dulid.rnd=secure`. Apart from that it can be overridden at implicit scope level.
 
-## Benchmarks
+Benchmarks
+----------
 Computer
 ```
 Model Name:              MacBook Pro
@@ -45,7 +51,8 @@ Results
 [info] TheBenchmark.uuid            thrpt    3   923135.293 ± 104787.680  ops/s
 ```
 
-## Example
+Example
+-------
 ```scala
 scala> import ulid._
 import ulid._
@@ -63,7 +70,8 @@ scala> val id2 = ULID()(Rnd.secure) // secure Rnd was used explicitly
 id2: ulid.ULID = EZ75ZXDD10BP5WQX4RTJK2W8NP
 ```
 
-## Dependency
+Dependency
+----------
 ```scala
 libraryDependencies += "com.github.andyglow"  %% "ulid"  % $latestVersion
 ```
