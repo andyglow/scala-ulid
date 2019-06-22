@@ -5,7 +5,7 @@
 
 Scala implementation of ULID spec (https://github.com/ulid/spec)
 
-Scala version 2.12 as well as 2.12 is supported.
+Scala version 2.11, 2.12 as well as 2.13 are supported.
 
 ## Features
 - fast
