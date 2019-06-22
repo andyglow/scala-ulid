@@ -2,6 +2,9 @@
 
 [![Build Status](https://travis-ci.org/andyglow/scala-ulid.svg?branch=master)](https://travis-ci.org/andyglow/scala-ulid)
 [![Coverage Status](https://coveralls.io/repos/github/andyglow/scala-ulid/badge.svg?branch=master)](https://coveralls.io/github/andyglow/scala-ulid?branch=master)
+![Maven Central](https://img.shields.io/maven-central/v/com.github.andyglow/ulid_2.11.svg)
+![Maven Central](https://img.shields.io/maven-central/v/com.github.andyglow/ulid_2.12.svg)
+![Maven Central](https://img.shields.io/maven-central/v/com.github.andyglow/ulid_2.13.svg)
 
 Scala implementation of ULID spec (https://github.com/ulid/spec)
 
@@ -58,4 +61,9 @@ id1: ulid.ULID = 08J3ZXDD107C2WZZZZ4Z2GD700
 
 scala> val id2 = ULID()(Rnd.secure) // secure Rnd was used explicitly
 id2: ulid.ULID = EZ75ZXDD10BP5WQX4RTJK2W8NP
+```
+
+## Dependency
+```scala
+libraryDependencies += "com.github.andyglow"  %% "ulid"  % $latestVersion
 ```

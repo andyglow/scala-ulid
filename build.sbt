@@ -97,7 +97,7 @@ val commons = Seq(
 lazy val impl = (project in file("impl"))
   .settings(
     commons,
-    name := "ulid",
+    name := "scala-ulid",
     libraryDependencies ++= Seq(
       "org.scalatest"  %% "scalatest"  % "3.0.8" % Test,
       "org.scalacheck" %% "scalacheck" % "1.14.0" % Test))
