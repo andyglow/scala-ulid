@@ -8,7 +8,7 @@ Scala ULID [![scaladex-badge][]][scaladex] [![maven-badge][]][maven] [![travis-b
 [coveralls]:           https://coveralls.io/github/andyglow/scala-ulid?branch=master
 [coveralls-badge]:     https://coveralls.io/repos/github/andyglow/scala-ulid/badge.svg?branch=master
 [maven]:               https://search.maven.org/#search%7Cga%7C1%7Cscala-ulid
-[maven-badge]:         https://maven-badges.herokuapp.com/maven-central/com.github.andyglow/ulid_2.13/badge.svg
+[maven-badge]:         https://img.shields.io/nexus/r/https/oss.sonatype.org/com.github.andyglow/ulid_2.13.svg?color=green
 
 Scala implementation of ULID spec (https://github.com/ulid/spec)
 
