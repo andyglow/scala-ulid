@@ -100,7 +100,7 @@ lazy val impl = (project in file("impl"))
     name := "scala-ulid",
     libraryDependencies ++= Seq(
       "org.scalatest"  %% "scalatest"  % "3.0.8" % Test,
-      "org.scalacheck" %% "scalacheck" % "1.14.0" % Test))
+      "org.scalacheck" %% "scalacheck" % "1.14.3" % Test))
 
 lazy val bench = (project in file("bench"))
   .dependsOn(impl)
