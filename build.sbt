@@ -114,7 +114,7 @@ lazy val root = (project in file("."))
   .settings(
     commons,
     name := "root",
-    crossScalaVersions := Nil,
+//    crossScalaVersions := Nil,
     publish / skip := true,
     publishArtifact := false,
     aggregate in update := false)
