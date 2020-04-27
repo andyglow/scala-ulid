@@ -1,12 +1,16 @@
-Scala ULID [![scaladex-badge][]][scaladex] [![maven-badge][]][maven] [![travis-badge][]][travis] [![coveralls-badge][]][coveralls]
+Scala ULID 
 ==========
+[![scaladex-badge][]][scaladex]
+[![maven-badge][]][maven]
+[![drone-badge][]][drone]
+[![codecov-badge][]][codecov]
 
 [scaladex]:            https://index.scala-lang.org/com.github.andyglow/scala-ulid
 [scaladex-badge]:      https://index.scala-lang.org/com.github.andyglow/scala-ulid/latest.svg
-[travis]:              https://travis-ci.org/andyglow/scala-ulid
-[travis-badge]:        https://travis-ci.org/andyglow/scala-ulid.svg?branch=master
-[coveralls]:           https://coveralls.io/github/andyglow/scala-ulid?branch=master
-[coveralls-badge]:     https://coveralls.io/repos/github/andyglow/scala-ulid/badge.svg?branch=master
+[drone]:               https://cloud.drone.io/andyglow/scala-ulid
+[drone-badge]:         https://cloud.drone.io/api/badges/andyglow/scala-ulid/status.svg
+[codecov]:             https://codecov.io/gh/andyglow/scala-ulid
+[codecov-badge]:       https://codecov.io/gh/andyglow/scala-ulid/branch/master/graph/badge.svg
 [maven]:               https://search.maven.org/#search%7Cga%7C1%7Cscala-ulid
 [maven-badge]:         https://img.shields.io/nexus/r/https/oss.sonatype.org/com.github.andyglow/ulid_2.13.svg?color=green
 

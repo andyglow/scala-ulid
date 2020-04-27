@@ -17,7 +17,7 @@ val commons = Seq(
 
   scalaVersion := "2.11.12",
 
-  crossScalaVersions := Seq("2.11.12", "2.12.10", "2.13.1"),
+  crossScalaVersions := Seq("2.11.12", "2.12.10", "2.13.2"),
 
   scalacOptions ++= {
     val options = Seq(
