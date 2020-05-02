@@ -1,10 +1,12 @@
 package ulid
 
 import org.scalatest._
-import org.scalatest.Matchers._
+import matchers.should.Matchers._
+import org.scalatest.matchers
+import org.scalatest.funsuite.AnyFunSuite
 
 
-class RndSpec extends FunSuite {
+class RndSpec extends AnyFunSuite {
 
   test("Rnd.lookupDefault") {
     Rnd.lookupDefault(Map()) shouldBe Rnd.fastWeakSeed
