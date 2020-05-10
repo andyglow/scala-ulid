@@ -1,10 +1,12 @@
 package ulid
 
 import org.scalatest._
-import org.scalatest.Matchers._
+import matchers.should.Matchers._
+import org.scalatest.matchers
+import org.scalatest.funsuite.AnyFunSuite
 
 
-class CrockfordSpec extends FunSuite {
+class CrockfordSpec extends AnyFunSuite {
   import CrockfordSpec._
 
   test("encode") {
