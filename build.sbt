@@ -3,7 +3,9 @@ import ReleaseTransformations._
 import scala.sys.process._
 
 // https://github.com/xerial/sbt-sonatype/issues/71
-publishTo in ThisBuild := sonatypePublishTo.value
+ThisBuild / publishTo := sonatypePublishTo.value
+
+ThisBuild / versionScheme := Some("pvp")
 
 val commons = Seq(
 
@@ -46,7 +48,7 @@ val commons = Seq(
     }
   },
 
-  scalacOptions in (Compile,doc) ++= Seq(
+  Compile / doc / scalacOptions ++= Seq(
     "-groups",
     "-implicits",
     "-no-link-warnings"),
@@ -99,7 +101,7 @@ lazy val impl = (project in file("impl"))
     commons,
     name := "scala-ulid",
     libraryDependencies ++= Seq(
-      "org.scalatest"  %% "scalatest"  % "3.0.8" % Test,
+      "org.scalatest"  %% "scalatest"  % "3.2.8" % Test,
       "org.scalacheck" %% "scalacheck" % "1.14.0" % Test))
 
 lazy val bench = (project in file("bench"))
@@ -117,4 +119,4 @@ lazy val root = (project in file("."))
 //    crossScalaVersions := Nil,
     publish / skip := true,
     publishArtifact := false,
-    aggregate in update := false)
+    update / aggregate := false)

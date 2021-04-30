@@ -1,10 +1,10 @@
 package ulid
 
-import org.scalatest.Matchers._
-import org.scalatest._
+import org.scalatest.funsuite._
+import org.scalatest.matchers.should.Matchers._
 
 
-class ULIDSpec extends FunSuite {
+class ULIDSpec extends AnyFunSuite {
 
   test("ULID() produce result of type ULID") {
     val id = ULID()
