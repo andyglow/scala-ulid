@@ -1,4 +1,4 @@
-addSbtPlugin("org.scoverage" %% "sbt-scoverage" % "1.6.1")
+addSbtPlugin("org.scoverage" %% "sbt-scoverage" % "1.8.2")
 
 addSbtPlugin("com.github.gseitz" % "sbt-release" % "1.0.11")
 
